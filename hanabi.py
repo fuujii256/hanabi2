@@ -6,13 +6,13 @@ import pygame
  
 
 def main(): # メイン
-    global img_bg
-    global img_char
-    global tmr
-    global scene
-    global ac
-    global sc
-    global img
+    #global img_bg
+    #global img_char
+    #global tmr
+    #global scene
+    #global ac
+    #global sc
+    #global img
 
 
     #img_bg = pygame.image.load('image/IMG_0558.png')   
@@ -23,7 +23,7 @@ def main(): # メイン
     img_char = [ pygame.image.load('image/IMG_0591.png'),  pygame.image.load('image/IMG_0597.png'),   
                 pygame.image.load('image/IMG_0614.png') , pygame.image.load('image/IMG_0575.png') ]  
     img_hanabi = [ pygame.image.load('image/IMG_0592.png'),  pygame.image.load('image/IMG_0598.png'),   
-               pygame.image.load('image/IMG_0614.png') , pygame.image.load('image/IMG_0587.png') ]  
+               pygame.image.load('image/IMG_0615.png') , pygame.image.load('image/IMG_0587.png') ]  
     img_koukaon = [ pygame.image.load('image/IMG_0593.png'),  pygame.image.load('image/IMG_0599.png'),   
               pygame.image.load('image/IMG_0615.png') , pygame.image.load('image/IMG_0581.png') ]  
     
@@ -33,6 +33,8 @@ def main(): # メイン
     img_fukidashi_2 = [ pygame.image.load('image/IMG_06001.png'),  pygame.image.load('image/IMG_06002.png'),   
               pygame.image.load('image/IMG_0600.png') ] 
     img_fukidashi_3 = [ pygame.image.load('image/IMG_0617.png') ] 
+    img_alice_dekimashita = pygame.image.load('image/IMG_06141.png')
+    img_sensei_te = pygame.image.load("image/IMG_06142.png")
     tmr = 0
     scene = 1
     ac = 100
@@ -111,26 +113,47 @@ def main(): # メイン
                 ac=120
                 atemp=0
                 ttmr=0
-        elif tmr < 230:
+        elif tmr < 200:
 
                 atemp= ac*ttmr
                 screen.blit(img_bg[2], [0,0-atemp])                   
                 screen.blit(img_char[2], [0,0-atemp]) 
                 screen.blit(img_hanabi[2], [0,0-atemp])                 
                 screen.blit(img_koukaon[2], [0,0-atemp])                   
-        elif tmr < 300:
+        elif tmr < 220:
 
                 atemp= ac*ttmr
                 screen.blit(img_bg[2], [0,0-atemp])                   
-                screen.blit(img_char[2], [0,0-atemp]) 
+                #screen.blit(img_char[2], [0,0-atemp]) 
+                screen.blit(img_alice_dekimashita,[0,0-atemp]) 
                 screen.blit(img_hanabi[2], [0,0-atemp])                 
-                screen.blit(img_koukaon[2], [0,0-atemp]) 
+                #screen.blit(img_koukaon[2], [0,0-atemp]) 
                 
                 if ttmr < 19: 
                     ttmr=ttmr +1
                     ac= ac -3
-                else:
-                    screen.blit(img_fukidashi_3[0], [0,0])                    
+
+        elif tmr ==220:
+                ttmr =0
+
+        elif tmr ==230:
+                screen.blit(img_fukidashi_3[0], [0,0])   
+        
+        elif tmr <280:
+                ttmr=5     
+            
+        elif tmr <350:       
+                if ttmr < 19: 
+                       ttmr=ttmr +1
+                       ac= ac -3
+                       screen.blit(img_bg[2], [0,0-atemp])                   
+                       #screen.blit(img_char[2], [0,0-atemp]) 
+                       screen.blit(img_alice_dekimashita,[0,0-atemp]) 
+                       screen.blit(img_hanabi[2], [0,0-atemp])                 
+                       #screen.blit(img_koukaon[2], [0,0-atemp]) 
+                       screen.blit(img_fukidashi_3[0], [0,0])   
+                       screen.blit(img_sensei_te, [0,0-atemp+80]) 
+        
 
         else:
                 pygame.quit()
