@@ -6,14 +6,6 @@ import pygame
  
 
 def main(): # メイン
-    #global img_bg
-    #global img_char
-    #global tmr
-    #global scene
-    #global ac
-    #global sc
-    #global img
-
 
     #img_bg = pygame.image.load('image/IMG_0558.png')   
     #img_char= pygame.image.load('image/IMG_0557.png')                             # -1はAlphaを含んだ形式(0:グレー, 1:カラー)
@@ -36,9 +28,11 @@ def main(): # メイン
     img_alice_dekimashita = pygame.image.load('image/IMG_06141.png')
     img_sensei_te = pygame.image.load("image/IMG_06142.png")
     tmr = 0
+
     scene = 1
     ac = 100
     sc = 1.0
+    
 
     pygame.init()
     pygame.display.set_caption("アリスの花火")
@@ -61,8 +55,9 @@ def main(): # メイン
                 ac=100
                 atemp=0
                 ttmr=0
-                i = 0                
-        elif tmr < 100:
+                i = 0     
+                j = 0
+        elif tmr <= 120:
                 atemp= ac*ttmr 
                 screen.blit(img_bg[0], [0,0])
                 screen.blit(img_char[0], [0, 800-atemp]) 
@@ -70,25 +65,32 @@ def main(): # メイン
                 if ttmr < 19: 
                     ttmr=ttmr +1
                     ac= ac -3
-                if tmr > 60:
-                    if  i<49: i = i + 1
-                    screen.blit(img_fukidashi_1[int(i/10)], [0,0])
+                if tmr >=60:
+                    if tmr <70:
+                        screen.blit(img_fukidashi_1[0], [0,0])
+                    elif tmr <90:
+                        screen.blit(img_fukidashi_1[1], [0,0])
+                    elif tmr <105:
+                        screen.blit(img_fukidashi_1[2], [0,0])
+                    else:
+                        screen.blit(img_fukidashi_1[3], [0,0])                    
+                    
    
-        elif tmr < 120:
+        elif tmr < 150:
                 screen.blit(img_bg[0], [0,0])
                 screen.blit(img_char[0], [0, 800-atemp])     
                 screen.blit(img_fukidashi_1[4], [0,0])
 
 
 #       if scene == 2:
-        elif tmr == 120:
+        elif tmr == 150:
                 #このシーンの動きの初期化
                 ac=120
                 atemp=0
                 ttmr=0
                 i=0
                 
-        elif tmr < 180:  
+        elif tmr < 220:  
                 atemp= ac*ttmr
                 screen.blit(img_bg[1], [0,1100-atemp])                   
                 screen.blit(img_char[1], [0, 1100-atemp])             
@@ -97,30 +99,30 @@ def main(): # メイン
                     ac= ac -3
                    
                 else:
-                    if  i<29: i = i + 1
-                    screen.blit(img_fukidashi_2[int(i/10)], [0,1100-atemp])
+                    if  i<44: i = i + 1
+                    screen.blit(img_fukidashi_2[int(i/15)], [0,1100-atemp])
 
-        elif tmr < 190:  
+        elif tmr < 250:  
                 atemp= ac*ttmr
                 screen.blit(img_bg[1], [0,1100-atemp])                   
                 screen.blit(img_char[1], [0, 1100-atemp])             
-                screen.blit(img_fukidashi_2[int(i/10)], [0,1100-atemp])
+                screen.blit(img_fukidashi_2[int(i/15)], [0,1100-atemp])
                 screen.blit(img_koukaon[1], [0,1100-atemp])                     
                     
 #        if scene == 3:
-        elif tmr == 190:
+        elif tmr == 250:
                 #このシーンの動きの初期化
                 ac=120
                 atemp=0
                 ttmr=0
-        elif tmr < 200:
+        elif tmr < 270:
 
                 atemp= ac*ttmr
                 screen.blit(img_bg[2], [0,0-atemp])                   
                 screen.blit(img_char[2], [0,0-atemp]) 
                 screen.blit(img_hanabi[2], [0,0-atemp])                 
                 screen.blit(img_koukaon[2], [0,0-atemp])                   
-        elif tmr < 220:
+        elif tmr < 290:
 
                 atemp= ac*ttmr
                 screen.blit(img_bg[2], [0,0-atemp])                   
@@ -133,16 +135,16 @@ def main(): # メイン
                     ttmr=ttmr +1
                     ac= ac -3
 
-        elif tmr ==220:
+        elif tmr ==280:
                 ttmr =0
 
-        elif tmr ==230:
+        elif tmr ==290:
                 screen.blit(img_fukidashi_3[0], [0,0])   
         
-        elif tmr <280:
+        elif tmr <340:
                 ttmr=5     
             
-        elif tmr <350:       
+        elif tmr <410:       
                 if ttmr < 19: 
                        ttmr=ttmr +1
                        ac= ac -3
