@@ -41,6 +41,9 @@ def main(): # メイン
     font1 = pygame.font.SysFont('meiryo', 40)   
     clock = pygame.time.Clock()
 
+    #while key[pygame.K_UP] <1:
+    #    tmr=0
+        
     while True:
 #        screen.fill((0,0,0))
 
